@@ -198,3 +198,5 @@ A button that is wrapped with a `Link` tag redirects back to home back url path.
 ---
 
 # Thank you for viewing my project and giving feedback! c:
+
+---
