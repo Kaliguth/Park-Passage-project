@@ -32,7 +32,9 @@ The navbar contains a navbar with an unordered list of list items (logo, and tex
 
 #### Image:
 
-## ![Navbar](./public/Navbar.png "Navbar to navigate through the website pages")
+![Navbar](./public/Navbar.png "Navbar to navigate through the website pages")
+
+---
 
 ### Footer
 
@@ -161,11 +163,15 @@ The button to return to the parks page is wrapped with a `Link` tag directing ba
 
 ##### Top
 
-## ![Park Details Page](./public/ParkInfo1.png "Park details page - Detailed information top")
+![Park Details Page](./public/ParkInfo1.png "Park details page - Detailed information top")
+
+---
 
 ##### Middle
 
-## ![Park Details Page](./public/ParkInfo2.png "Park details page - Detailed information middle")
+![Park Details Page](./public/ParkInfo2.png "Park details page - Detailed information middle")
+
+---
 
 ##### Bottom
 
