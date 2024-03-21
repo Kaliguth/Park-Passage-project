@@ -84,10 +84,12 @@ Only contains a title div and an information div.
 
 ### National parks page
 
-This page presents objects fetched from the national parks API.<br>
+This page presents objects fetched from the national parks API (maximum number of parks to fetch is 50).<br>
 Each object is shown inside a container with the name and an image of the park.<br>
 The page also allows the user to search for a park by name with an input and a button.<br>
-The user can input the whole name, part of it, or even one letter.
+The user can input the whole name, part of it, or even one letter.<br>
+A select box to the right of the search by name elemets allows the user to select an activity.<br>
+Choosing an activity shows parks offering the selected activity.
 
 #### Functionality:
 
@@ -103,13 +105,25 @@ Finally, the `getApiData` function is called at the end of the `useEffect`.<br><
 
 ##### Search park by name:
 
-A `searchParkByName` function is introduced. This function collects the input value from the search input field.<br>
+`searchParkByName` function - This function collects the input value from the search input field.<br>
 If the input field is empty, it changes `parksArray` to contain all parks to show them.<br>
 Now, because the used API does not offer a search by name options, and only a search by park code, the function has to go over `allParks` array to find which park includes the input value given.<br>
 The function then collects the appropriate park park code (if no appropriate park is found, `parksArray` is set to be empty).<br>
 The function then uses the found park code and places it inside the url parameter to search by park code, and fetches from it.<br>
 Finally, sets `parksArray` to the fetched data.<br>
 This function is called when the `Search` button is clicked.<br><br>
+
+##### Filter parks by activity:
+
+`filterByActivity` function - Function to change `parksArray` to hold parks by selected activity.<br>
+The function collects the value of the activity select box.<br>
+It first of all empties `parksArray`, then checks what `parksArray` needs to hold based on select box value.<br>
+If the value in the select box is `all` (`All parks` select box text), sets `parksArray` to show all parks (sets `parksArray` to be the same as `allParks` array with the `setParksArray` useState).<br>
+Otherwise goes over `allParks` array with a fori loop.<br>
+Inside the fori loop, goes over each park's activities array and checks if any of the park's activities' names is the same as the select box value.<br>
+If the selected activity is found inside the park, adds it into `parksArray`.<br>
+The function to add the park into `parksArray` is done by `setParkArray` useState, and appends the current park into the previous state of `parksArray` like this: `setParksArray((prevParksArray) => [...prevParksArray, allParks[i]]);`, then breaks the inner loop to check the next park.<br>
+When the function ends, `parksArray` contains all relevant parks to be shown based of activity selected.<br><br>
 
 ##### Return:
 
@@ -118,9 +132,23 @@ If `parksArray` is empty, a div saying `No parks found` is returned.<br>
 Otherwise, the `map` function is used to go over `parksArray` and show all parks currently inside it.<br>
 Each park is displayed as a seperate div, and all elements inside it are wrapped with a `Link` that redirects to the `ParkDetails` component of the current park by using it's park code inside the url path.
 
-#### Image:
+#### Images:
 
-![Parks Page](./public/Parks.png "Parks page - API objects")
+##### Showing all parks - 50 parks is maximum
+
+![Parks Page](./public/Parks.png "Parks page - All parks")
+
+---
+
+##### Search park by name
+
+![Search Park by Name](./public/ParkByName.png "Parks page - Park found by name")
+
+---
+
+##### Filter parks by activity
+
+![Filter Parks by Activity](./public/ParksByActivity.png "Parks page - Parks found by activity (Horseback Riding)")
 
 ---
 

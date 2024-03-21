@@ -130,16 +130,21 @@ export default function Parks() {
       </h2>
       <br />
       <div className="align-center">
-        <div className="d-inline-block bg-light bg-opacity-75 border border-dark rounded px-3 py-2 pb-3 pt-3">
+        <div className="d-inline-block bg-warning bg-opacity-75 border border-dark rounded px-3 py-2 pb-3 pt-3">
           <h5>Search for a park: </h5>
-          <input type="text" id="parkSearch" className="rounded pb-1" />
+          <input
+            type="text"
+            id="parkSearch"
+            placeholder="Park name"
+            className="rounded pb-1"
+          />
           <span className="mx-1"> </span>
           <button className="btn btn-light btn-sm" onClick={searchParkByName}>
             Search
           </button>{" "}
         </div>
         <span className="mx-4"> </span>
-        <div className="d-inline-block bg-light bg-opacity-75 border border-dark rounded px-3 py-3 pb-3">
+        <div className="d-inline-block bg-warning bg-opacity-75 border border-dark rounded px-3 py-3 pb-3">
           <h5>Find parks by activity:</h5>
           <select
             id="activityFilter"
@@ -178,8 +183,8 @@ export default function Parks() {
         </div>
       ) : (
         <div className="text-center">
-          <h6 className="d-inline-block bg-light bg-opacity-75 border border-dark rounded px-3 py-3 pb-3">
-            Click any park for more details!
+          <h6 className="d-inline-block bg-warning bg-opacity-75 border border-dark rounded px-3 py-3 pb-3">
+            Click any park for more details
           </h6>
           <br />
           {parksArray.map((park) => (
@@ -188,15 +193,17 @@ export default function Parks() {
               className="d-inline-block bg-primary border border-dark rounded mx-3 my-3 px-3 py-3 vw-25"
             >
               <Link to={`${park.parkCode}`}>
-                <h3 className="text-dark">
-                  <u>{park.name}</u>
-                </h3>
-                <img
-                  src={park.images[0].url}
-                  alt={park.images[0].altText}
-                  width="250"
-                  height="200"
-                />
+                <div className="bg-light bg-opacity-75 border border-dark rounded px-3 py-3 pb-3">
+                  <h3 className="text-dark">
+                    <u>{park.name}</u>
+                  </h3>
+                  <img
+                    src={park.images[0].url}
+                    alt={park.images[0].altText}
+                    width="250"
+                    height="200"
+                  />
+                </div>
               </Link>
             </div>
           ))}
